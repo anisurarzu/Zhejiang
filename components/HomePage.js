@@ -16,7 +16,7 @@ export default function HomePage() {
         <div className="relative z-10 flex flex-col items-center text-center px-4">
           {/* Under Construction Message */}
           <h1 className="text-4xl sm:text-4xl md:text-4xl font-extrabold mb-4 text-yellow-400 drop-shadow-lg mt-2">
-            Comming Soon
+            Coming Soon
           </h1>
           <p className="text-xl sm:text-3xl md:text-2xl font-semibold mb-6 max-w-2xl drop-shadow-lg">
             Our site is currently under construction. We’re working hard to
@@ -70,7 +70,7 @@ export default function HomePage() {
               {/* Dongguan Office */}
               <div className="border-l-4 border-yellow-400 pl-4">
                 <p className="font-semibold text-lg text-gray-900">
-                  Dongguan Office
+                  Guangdong Office
                 </p>
                 <p className="text-gray-700 mt-1 text-sm">
                   145 Renmin North Road, Humen Town, Dongguan City, Guangdong
