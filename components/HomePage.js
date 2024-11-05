@@ -70,7 +70,7 @@ export default function HomePage() {
               {/* Dongguan Office */}
               <div className="border-l-4 border-yellow-400 pl-4">
                 <p className="font-semibold text-lg text-gray-900">
-                  Guangdong Office
+                  Dongguan Office
                 </p>
                 <p className="text-gray-700 mt-1 text-sm">
                   145 Renmin North Road, Humen Town, Dongguan City, Guangdong
