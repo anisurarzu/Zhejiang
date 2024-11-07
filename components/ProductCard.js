@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
+
 
 export default function ProductCard() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -104,6 +106,11 @@ export default function ProductCard() {
     setIsModalOpen(false);
     setSelectedProduct(null);
   };
+  // const getButtonColor = (index) => {
+  //   return index % 2 === 0 ? "bg-indigo-600" : "bg-green-600";
+  // }
+    
+  
 
 
   return (
@@ -130,38 +137,48 @@ export default function ProductCard() {
 
         {/* Display Filtered and Paginated Products */}
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4 md:px-16">
-          {currentProducts.map((product, index) => (
-            <div
-              key={index}
-              className="relative bg-white rounded-lg shadow-xl overflow-hidden h-96 flex flex-col"
-            >
-              <img
-                src={product.filePath}
-                alt={`Fabric ${index + 1}`}
-                className="w-full h-48 object-cover"
-              />
-              <div className="flex flex-col p-6 flex-grow">
-                <h3 className="text-2xl font-semibold text-gray-800">
-                  {product.name}
-                </h3>
-                <p className="text-gray-600 mt-3 text-sm line-clamp-3">
-                  {product.description}
-                </p>
-              </div>
+      {currentProducts.map((product, index) => (
+        <motion.div
+          key={index}
+          className="relative bg-white rounded-lg shadow-xl overflow-hidden h-96 flex flex-col"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, delay: index * 0.1 }}
+          whileHover={{ scale: 1.05 }}
+        >
+          <motion.img
+            src={product.filePath}
+            alt={`Fabric ${index + 1}`}
+            className="w-full h-48 object-cover"
+            initial={{ scale: 1.1 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5 }}
+          />
+          <div className="flex flex-col p-6 flex-grow">
+            <h3 className="text-2xl font-semibold text-gray-800">
+              {product.name}
+            </h3>
+            <p className="text-gray-600 mt-3 text-sm line-clamp-3">
+              {product.description}
+            </p>
+          </div>
 
-              <div className="mt-5">
-                <button
-                  onClick={() => openModal(product)}
-                  className={`absolute bottom-4 right-6 py-2 px-4 text-white ${getButtonColor(
-                    index
-                  )} transform hover:translate-y-1 transition-all`}
-                >
-                  Details
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+          <div className="mt-5">
+            <motion.button
+              onClick={() => openModal(product)}
+              className={`absolute bottom-4 right-6 py-2 px-4 text-white ${getButtonColor(
+                index
+              )} transform hover:translate-y-1 transition-all`}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Details
+            </motion.button>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+
 
         {/* Pagination Controls */}
         <div className="flex justify-center mt-8">
