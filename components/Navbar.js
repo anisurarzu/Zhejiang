@@ -1,26 +1,22 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import "@fontsource/poppins";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Handle scroll event to change navbar background color
+  // Handle scroll event to toggle shadow
   const handleScroll = () => {
-    if (window.scrollY > 10) {
-      setScrolled(true); // Set navbar to solid color when scrolled
-    } else {
-      setScrolled(false); // Set navbar to transparent when at top
-    }
+    setScrolled(window.scrollY > 10); // Add shadow when scrolled
   };
 
   // Add event listener on mount and cleanup on unmount
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-
-    // Cleanup event listener
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -32,51 +28,42 @@ export default function Navbar() {
   return (
     <div
       className={`fixed top-0 left-0 w-full transition-all duration-300 z-50 ${
-        scrolled ? 'bg-gray-900 bg-opacity-70' : 'bg-gray-950 bg-opacity-90'
-      } backdrop-blur-md`}
-    >
-      <nav className="flex justify-between items-center px-6 py-4 font-poppins">
-        {/* Company Logo */}
-        <div className="text-3xl font-bold text-white flex items-center">
-          <a href="/" className="flex items-center">
-            <img
-              src="/logo.png" // Replace with your logo path
-              alt="C"
-              className="h-10 mr-3"
-            />
-          </a>
+        scrolled ? "shadow-lg bg-white" : "bg-white"
+      }`}>
+      <nav className="flex justify-between items-center px-6 py-3 font-poppins">
+        {/* Company Name in place of Logo */}
+        <div className="text-2xl font-semibold text-gray-800 flex items-center">
+          <Link href="/" className="flex items-center">
+            Zhejiang
+          </Link>
         </div>
 
         {/* Desktop Menu Links */}
-        <div className="hidden md:flex space-x-10 text-lg">
-          <a
+        <div className="hidden md:flex space-x-8 text-lg">
+          <Link
             href="/"
-            className="text-white hover:text-indigo-300 transition-colors duration-300"
-          >
-            Home
-          </a>
-          <a
+            className="text-gray-600 hover:text-orange-500 transition-colors duration-300 relative">
+            <span className="hover-underline">Home</span>
+          </Link>
+          <Link
             href="/fabric"
-            className="text-white hover:text-indigo-300 transition-colors duration-300"
-          >
-            Fabric
-          </a>
+            className="text-gray-600 hover:text-orange-500 transition-colors duration-300 relative">
+            <span className="hover-underline">Fabric</span>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center">
           <button
             onClick={toggleMenu}
-            className="text-white focus:outline-none"
-          >
+            className="text-gray-800 focus:outline-none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
-              strokeWidth="2"
-            >
+              strokeWidth="2">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -89,21 +76,19 @@ export default function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       {menuOpen && (
-        <div className="md:hidden bg-gray-900 bg-opacity-70 text-white text-center py-4 backdrop-blur-md">
-          <a
+        <div className="md:hidden bg-white text-gray-800 text-center py-3 shadow-lg">
+          <Link
             href="/"
-            className="block py-2 px-4 hover:bg-gray-700"
-            onClick={() => setMenuOpen(false)}
-          >
+            className="block py-2 px-4 hover:bg-gray-100 hover:text-orange-500"
+            onClick={() => setMenuOpen(false)}>
             Home
-          </a>
-          <a
+          </Link>
+          <Link
             href="/fabric"
-            className="block py-2 px-4 hover:bg-gray-700"
-            onClick={() => setMenuOpen(false)}
-          >
+            className="block py-2 px-4 hover:bg-gray-100 hover:text-orange-500"
+            onClick={() => setMenuOpen(false)}>
             Fabric
-          </a>
+          </Link>
         </div>
       )}
     </div>

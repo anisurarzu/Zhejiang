@@ -1,36 +1,29 @@
-"use client"; // Ensures this component runs on the client side
-
+"use client";
+import Head from "next/head";
 import React, { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import Navbar from "./Navbar";
 import Mission from "./Mission";
+import { motion, AnimatePresence } from "framer-motion"; // Import for animations
+import ImageGallery from "./ImageGallery";
+import MissionPage from "./MissionPage";
 
 export default function HomePage() {
-  // Define the carousel images
-  const images = [
-    "/img/bg.jpg", // Replace with your image paths
-    "/img/car.jpg",
-  ];
+  const images = ["/img/bg.jpg", "/img/car.jpg"];
 
-  // State to keep track of the current image index
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Automatically change the image every 5 seconds
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // Change image every 5 seconds
-
-    // Clean up the interval when component is unmounted
+    }, 5000);
     return () => clearInterval(intervalId);
   }, [images.length]);
 
-  // Function to go to the next image
   const goToNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
-  // Function to go to the previous image
   const goToPrevious = () => {
     setCurrentIndex(
       (prevIndex) => (prevIndex - 1 + images.length) % images.length
@@ -38,64 +31,98 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Navbar Section */}
-      <Navbar />
-
-      {/* Carousel Section */}
-      <div className="relative w-full h-[500px] overflow-hidden bg-gray-900 mt-[72px]">
-        <img
-          src={images[currentIndex]} // Display the current image based on the index
-          alt={`Slide ${currentIndex}`}
-          className="w-full h-full object-cover"
+    <>
+      <Head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Itim&display=swap"
+          rel="stylesheet"
         />
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80 p-48">
-          <div className="bg-gray-50 bg-opacity-70 p-4 w-full rounded flex text-center justify-center items-center space-x-4">
-            <div className="text-3xl text-black font-popins font-bold text-center justify-center items-center">This site is under construction</div>
+      </Head>
+
+      <div className="min-h-screen bg-gray-50">
+        <Navbar />
+
+        {/* Carousel Section */}
+        <div className="relative w-full h-[600px] overflow-hidden bg-gray-900 mt-[72px]">
+          {/* Animated Image Slider with Zoom In */}
+          <AnimatePresence>
+            <motion.img
+              key={currentIndex}
+              src={images[currentIndex]}
+              alt={`Slide ${currentIndex}`}
+              initial={{ opacity: 0, scale: 1.1 }} // Slight zoom-in initially
+              animate={{ opacity: 1, scale: 1 }} // Normal scale on animation
+              exit={{ opacity: 0, scale: 1.1 }} // Slight zoom-in on exit
+              transition={{ duration: 3 }} // Increase duration to make the zoom slower
+              className="absolute w-full h-full object-cover"
+            />
+          </AnimatePresence>
+
+          {/* Gradient Overlay with Parallax Effect */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-t from-[#4C4370] to-transparent opacity-80"
+            initial={{ opacity: 0.7 }}
+            animate={{ opacity: 0.9 }}
+            transition={{ duration: 1 }}
+          />
+
+          {/* Centered Caption Text */}
+          <div className="absolute inset-0 flex justify-center items-center">
+            <motion.div
+              className="bg-white bg-opacity-60 p-6 rounded-md shadow-lg text-center"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}>
+              <h1 className="text-4xl font-itim font-bold text-gray-900">
+                This site is under construction
+              </h1>
+              <p className="text-gray-800 mt-2">
+                Stay tuned for updates on our latest products and offerings.
+              </p>
+            </motion.div>
           </div>
+
+          {/* Carousel Navigation Buttons */}
+          <button
+            onClick={goToPrevious}
+            className="absolute top-1/2 left-6 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-4 rounded-full opacity-75 hover:opacity-100 transition-opacity shadow-lg hover:shadow-xl">
+            &#9664;
+          </button>
+          <button
+            onClick={goToNext}
+            className="absolute top-1/2 right-6 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-4 rounded-full opacity-75 hover:opacity-100 transition-opacity shadow-lg hover:shadow-xl">
+            &#9654;
+          </button>
         </div>
 
-        {/* Carousel Buttons */}
-        <button
-          onClick={goToPrevious}
-          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-700 text-white p-3 rounded-full opacity-75 hover:opacity-100 transition-opacity"
-        >
-          &#9664;
-        </button>
-        <button
-          onClick={goToNext}
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-700 text-white p-3 rounded-full opacity-75 hover:opacity-100 transition-opacity"
-        >
-          &#9654;
-        </button>
+        {/* Product Cards Section */}
+        <Mission />
+        <MissionPage />
+
+        <ImageGallery />
+
+        {/* Footer Section */}
+        <footer className="bg-gray-800 text-white py-8">
+          <div className="text-center">
+            <h3 className="text-lg font-bold">Oldstitch</h3>
+            <p className="text-sm mt-2">
+              © 2024 Zhejiang Lanhong Textile Technology Co., LTD
+            </p>
+            <p className="mt-1">All rights reserved.</p>
+          </div>
+          <div className="flex justify-center mt-4 space-x-6">
+            <a href="#" className="text-gray-400 hover:text-white">
+              Privacy Policy
+            </a>
+            <a href="#" className="text-gray-400 hover:text-white">
+              Terms of Service
+            </a>
+            <a href="#" className="text-gray-400 hover:text-white">
+              Contact Us
+            </a>
+          </div>
+        </footer>
       </div>
-
-      {/* Product Cards Section */}
-      {/* <ProductCard /> */}
-      <Mission />
-
-      {/* Footer Section */}
-      <footer className="bg-gray-800 text-white py-8">
-        <div className="text-center">
-          <h3 className="text-lg font-bold">Oldstitch</h3>
-          <p className="text-sm mt-2">
-            © 2024 Zhejiang Lanhong Textile Technology Co., LTD
-          </p>
-          <p className="mt-1">All rights reserved.</p>
-        </div>
-        <div className="flex justify-center mt-4 space-x-6">
-          <a href="#" className="text-gray-400 hover:text-white">
-            Privacy Policy
-          </a>
-          <a href="#" className="text-gray-400 hover:text-white">
-            Terms of Service
-          </a>
-          <a href="#" className="text-gray-400 hover:text-white">
-            Contact Us
-          </a>
-        </div>
-      </footer>
-    </div>
+    </>
   );
 }
