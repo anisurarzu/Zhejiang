@@ -73,12 +73,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}>
-              <h1 className="text-4xl font-itim font-bold text-gray-900">
-                
-              </h1>
-              <p className="text-gray-800 mt-2">
-                Stay tuned for updates on our latest products and offerings.
-              </p>
+             
             </motion.div>
           </div>
 
