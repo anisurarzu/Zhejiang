@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-
 export default function ProductCard() {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1); // Current page state
@@ -11,56 +10,86 @@ export default function ProductCard() {
   const productsPerPage = 8;
   const fabricImages = [
     {
-      filePath: "/img/cl-1.jpg",
+      filePath: "/img/fab1.jpg",
       name: "col-1",
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     },
     {
-      filePath: "/img/cl-2.jpg",
+      filePath: "/img/fab2.jpg",
       name: "col-2",
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     },
     {
-      filePath: "/img/cl-3.jpg",
+      filePath: "/img/fab3.jpg",
       name: "col-3",
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     },
     {
-      filePath: "/img/cl-4.jpg",
+      filePath: "/img/fab4.jpg",
       name: "col-4",
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     },
     {
-      filePath: "/img/cl-5.jpg",
+      filePath: "/img/fab5.jpg",
       name: "col-5",
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     },
     {
-      filePath: "/img/cl-6.jpg",
+      filePath: "/img/fab6.jpg",
       name: "col-6",
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     },
     {
-      filePath: "/img/cl-7.jpg",
+      filePath: "/img/fab7.jpg",
       name: "col-7",
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     },
     {
-      filePath: "/img/cl-8.jpg",
+      filePath: "/img/fab8.jpg",
       name: "col-8",
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     },
     {
-      filePath: "/img/cl-8.jpg",
+      filePath: "/img/fab9.jpg",
       name: "col-9",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    },
+    {
+      filePath: "/img/fab10.jpg",
+      name: "col-10",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    },
+    {
+      filePath: "/img/fab11.jpg",
+      name: "col-11",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    },
+    {
+      filePath: "/img/fab12.jpg",
+      name: "col-12",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    },
+    {
+      filePath: "/img/fab13.jpg",
+      name: "col-13",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    },
+    {
+      filePath: "/img/fab14.jpg",
+      name: "col-14",
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     },
@@ -109,16 +138,13 @@ export default function ProductCard() {
   // const getButtonColor = (index) => {
   //   return index % 2 === 0 ? "bg-indigo-600" : "bg-green-600";
   // }
-    
-  
-
 
   return (
     <div className="mt-10">
       {/* Product Section */}
       <div className="py-12 bg-white">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
-          Our Fabrics
+          Our Products
         </h2>
 
         {/* Search Field */}
@@ -137,48 +163,47 @@ export default function ProductCard() {
 
         {/* Display Filtered and Paginated Products */}
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4 md:px-16">
-      {currentProducts.map((product, index) => (
-        <motion.div
-          key={index}
-          className="relative bg-white rounded-lg shadow-xl overflow-hidden h-96 flex flex-col"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: index * 0.1 }}
-          whileHover={{ scale: 1.05 }}
-        >
-          <motion.img
-            src={product.filePath}
-            alt={`Fabric ${index + 1}`}
-            className="w-full h-48 object-cover"
-            initial={{ scale: 1.1 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.5 }}
-          />
-          <div className="flex flex-col p-6 flex-grow">
-            <h3 className="text-2xl font-semibold text-gray-800">
-              {product.name}
-            </h3>
-            <p className="text-gray-600 mt-3 text-sm line-clamp-3">
-              {product.description}
-            </p>
-          </div>
-
-          <div className="mt-5">
-            <motion.button
-              onClick={() => openModal(product)}
-              className={`absolute bottom-4 right-6 py-2 px-4 text-white ${getButtonColor(
-                index
-              )} transform hover:translate-y-1 transition-all`}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+          {currentProducts.map((product, index) => (
+            <motion.div
+              key={index}
+              className="relative bg-white rounded-lg shadow-xl overflow-hidden h-96 flex flex-col"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+              whileHover={{ scale: 1.05 }}
             >
-              Details
-            </motion.button>
-          </div>
-        </motion.div>
-      ))}
-    </div>
+              <motion.img
+                src={product.filePath}
+                alt={`Fabric ${index + 1}`}
+                className="w-full h-48 object-cover"
+                initial={{ scale: 1.1 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.5 }}
+              />
+              <div className="flex flex-col p-6 flex-grow">
+                <h3 className="text-2xl font-semibold text-gray-800">
+                  {product.name}
+                </h3>
+                <p className="text-gray-600 mt-3 text-sm line-clamp-3">
+                  {product.description}
+                </p>
+              </div>
 
+              <div className="mt-5">
+                <motion.button
+                  onClick={() => openModal(product)}
+                  className={`absolute bottom-4 right-6 py-2 px-4 text-white ${getButtonColor(
+                    index
+                  )} transform hover:translate-y-1 transition-all`}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Details
+                </motion.button>
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
         {/* Pagination Controls */}
         <div className="flex justify-center mt-8">

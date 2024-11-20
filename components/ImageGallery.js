@@ -3,12 +3,14 @@ import React from "react";
 import { motion } from "framer-motion"; // Importing for animations
 
 const images = [
-  "/img/cl-1.jpg", // Replace with your actual image paths
-  "/img/cl-2.jpg",
-  "/img/cl-3.jpg",
-  "/img/cl-4.jpg",
-  "/img/cl-5.jpg",
-  "/img/cl-6.jpg",
+  "/img/fab1.jpg", // Replace with your actual image paths
+  "/img/fab2.jpg",
+  "/img/fab3.jpg",
+  "/img/fab4.jpg",
+  "/img/fab5.jpg",
+  "/img/fab6.jpg",
+  "/img/fab7.jpg",
+  "/img/fab8.jpg",
 ];
 
 export default function ImageGallery() {
@@ -33,7 +35,7 @@ export default function ImageGallery() {
               <img
                 src={src}
                 alt={`Gallery image ${index + 1}`}
-                className="w-full h-full object-cover rounded-lg"
+                className="w-72 h-60 object-cover rounded-lg"
               />
               <motion.div
                 className="absolute inset-0 bg-black opacity-40"
