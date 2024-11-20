@@ -34,7 +34,7 @@ export default function Navbar() {
         {/* Company Name in place of Logo */}
         <div className="text-2xl font-semibold text-gray-800 flex items-center">
           <Link href="/" className="flex items-center">
-            Zhejiang
+            Lanhong Textile
           </Link>
         </div>
 

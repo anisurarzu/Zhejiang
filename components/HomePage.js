@@ -66,21 +66,7 @@ export default function HomePage() {
             transition={{ duration: 1 }}
           />
 
-          {/* Centered Caption Text */}
-          <div className="absolute inset-0 flex justify-center items-center">
-            <motion.div
-              className="bg-white bg-opacity-60 p-6 rounded-md shadow-lg text-center"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}>
-              <h1 className="text-4xl font-itim font-bold text-gray-900">
-                This site is under construction
-              </h1>
-              <p className="text-gray-800 mt-2">
-                Stay tuned for updates on our latest products and offerings.
-              </p>
-            </motion.div>
-          </div>
+        
 
           {/* Carousel Navigation Buttons */}
           <button
