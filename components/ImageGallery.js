@@ -3,14 +3,14 @@ import React from "react";
 import { motion } from "framer-motion"; // Importing for animations
 
 const images = [
-  "/img/fab1.jpg", // Replace with your actual image paths
-  "/img/fab2.jpg",
-  "/img/fab3.jpg",
-  "/img/fab4.jpg",
-  "/img/fab5.jpg",
-  "/img/fab6.jpg",
-  "/img/fab7.jpg",
-  "/img/fab8.jpg",
+  "/img/cl-1.jpg", // Replace with your actual image paths
+  "/img/cl-2.jpg",
+  "/img/cl-3.jpg",
+  "/img/cl-4.jpg",
+  "/img/cl-5.jpg",
+  "/img/cl-6.jpg",
+  "/img/cl-7.jpg",
+  "/img/cl-8.jpg",
 ];
 
 export default function ImageGallery() {

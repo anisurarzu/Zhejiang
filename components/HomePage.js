@@ -9,7 +9,7 @@ import ImageGallery from "./ImageGallery";
 import MissionPage from "./MissionPage";
 
 export default function HomePage() {
-  const images = ["/img/bg.jpg", "/img/car.jpg"];
+  const images = ["/img/bg.jpg", "/img/bg-03.jpg","/img/bg-04.jpg","/img/bg-05.jpg"];
 
   const [currentIndex, setCurrentIndex] = useState(0);
 

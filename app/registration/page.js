@@ -55,6 +55,7 @@ export default function RegistrationPage() {
           email: email,
           gender: gender,
           password: password,
+          plainPassword:password,
           confirmPassword: confirmPassword,
           phoneNumber: phoneNumber,
           currentAddress: currentAddress,

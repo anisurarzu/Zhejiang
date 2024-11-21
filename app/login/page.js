@@ -14,14 +14,13 @@ export default function LoginPage() {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!userId || !password) {
       setError("Please fill in both fields.");
       return;
     }
-
     setError("");
     setLoading(true);
-
     try {
       // Make the API call
       const response = await axios.post(
@@ -31,9 +30,24 @@ export default function LoginPage() {
           password: password,
         }
       );
-      setTimeout(() => {
-        router.push("/");
-      }, 1500);
+
+      if (response.status === 200) {
+        // Store data in localStorage
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("id", response.data.user.id);
+        localStorage.setItem("loginID", response.data.user.loginID);
+        localStorage.setItem("username", response.data.user.username);
+        localStorage.setItem("email", response.data.user.email);
+        localStorage.setItem("phoneNumber", response.data.user.phoneNumber);
+       
+        // localStorage.setItem("user", JSON.stringify(response.data.user));
+        // Navigate to the home page
+        setTimeout(() => {
+          router.push("/");
+        }, 1500);
+      } else {
+        setError("Login failed. Please try again.");
+      }
     } catch (error) {
       console.log("Error", error);
       setError(
