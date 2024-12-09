@@ -19,7 +19,7 @@ export default function About() {
       {/* Content Wrapper */}
       <div className="relative w-full max-w-7xl px-4 sm:px-6 lg:px-8 text-white flex items-center justify-center">
         {/* Transparent Card */}
-        <div className="bg-gray-900 bg-opacity-80 rounded-lg shadow-lg p-6 md:p-10 lg:p-12 text-center w-full max-w-3xl">
+        <div className="bg-gray-900 bg-opacity-60 rounded-lg shadow-lg p-6 md:p-10 lg:p-12 text-center w-full max-w-3xl">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             About Us
           </h2>
