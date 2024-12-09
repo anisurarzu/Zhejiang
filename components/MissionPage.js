@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 
 export default function MissionPage() {
   return (
-    <section className="min-h-screen bg-gray-50 py-2 px-6">
-      <div className="max-w-6xl mx-auto text-center">
+    <section className="bg-gradient-to-r from-gray-100 via-orang-100 to-orange-100 py-12 px-6">
+      <div className="max-w-7xl mx-auto text-center">
         {/* Title */}
         <motion.h2
-          className="text-4xl font-bold text-gray-800 mb-12"
+          className="text-5xl font-extrabold text-gray-900 mb-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}>
@@ -17,7 +17,7 @@ export default function MissionPage() {
 
         {/* Mission Description */}
         <motion.p
-          className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto"
+          className="text-xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}>
@@ -28,64 +28,16 @@ export default function MissionPage() {
           future.
         </motion.p>
 
-        {/* Animated Vector */}
-        <div className="flex justify-center mb-12">
-          <motion.div
-            className="relative w-full max-w-lg"
-            initial={{ scale: 0.5 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 2 }}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 100 100"
-              className="w-full h-auto"
-              fill="none">
-              {/* Animated Vector (Simple SVG) */}
-              <motion.circle
-                cx="50"
-                cy="50"
-                r="40"
-                stroke="#4C4370"
-                strokeWidth="4"
-                fill="transparent"
-                animate={{
-                  r: [40, 45, 40],
-                  opacity: [1, 0.6, 1],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-              />
-              <motion.path
-                d="M 20,80 C 40,60 60,60 80,80"
-                stroke="#4C4370"
-                strokeWidth="4"
-                fill="transparent"
-                animate={{
-                  strokeDashoffset: [100, 0],
-                  opacity: [0.5, 1],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-              />
-            </svg>
-          </motion.div>
-        </div>
-
+        {/* Animated Vector */} 
         {/* Call to Action */}
         <motion.div
-          className="mt-8"
+          className="mt-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.4 }}>
           <a
             href="#"
-            className="bg-[#4C4370] text-white py-3 px-8 rounded-full text-lg hover:bg-[#3c3a61] transition-colors">
+            className="bg-[#4C4370] text-white py-4 px-10 rounded-full text-lg shadow-lg hover:bg-[#3c3a61] transition-colors transform hover:scale-105">
             Join Us in Our Journey
           </a>
         </motion.div>

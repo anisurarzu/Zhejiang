@@ -140,10 +140,10 @@ export default function ProductCard() {
   // }
 
   return (
-    <div className="mt-10">
+    <div className="">
       {/* Product Section */}
-      <div className="py-12 bg-white">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+      <div className="py-12 bg-gradient-to-r from-gray-100 via-orang-100 to-orange-100">
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8 mt-6">
           Our Products
         </h2>
 
@@ -172,14 +172,16 @@ export default function ProductCard() {
               transition={{ duration: 0.3, delay: index * 0.1 }}
               whileHover={{ scale: 1.05 }}
             >
+              {/* Updated Image */}
               <motion.img
                 src={product.filePath}
                 alt={`Fabric ${index + 1}`}
-                className="w-full h-48 object-cover"
+                className="w-full h-48 object-contain bg-gray-100"
                 initial={{ scale: 1.1 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.5 }}
               />
+
               <div className="flex flex-col p-6 flex-grow">
                 <h3 className="text-2xl font-semibold text-gray-800">
                   {product.name}

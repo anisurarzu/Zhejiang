@@ -7,9 +7,15 @@ import Mission from "./Mission";
 import { motion, AnimatePresence } from "framer-motion"; // Import for animations
 import ImageGallery from "./ImageGallery";
 import MissionPage from "./MissionPage";
+import About from "./About";
 
 export default function HomePage() {
-  const images = ["/img/bg.jpg", "/img/bg-03.jpg","/img/bg-04.jpg","/img/bg-05.jpg"];
+  const images = [
+    "/img/bg.jpg",
+    "/img/bg-03.jpg",
+    "/img/bg-04.jpg",
+    "/img/bg-05.jpg",
+  ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -39,26 +45,30 @@ export default function HomePage() {
         />
       </Head>
 
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-100">
         <Navbar />
 
         {/* Carousel Section */}
-        <div className="relative w-full h-[600px] overflow-hidden bg-gray-900 mt-[72px]">
-          {/* Animated Image Slider with Zoom In */}
+        <div className="relative w-full h-[750px] overflow-hidden bg-gray-900">
+          {/* Sliding Image */}
           <AnimatePresence>
-            <motion.img
-              key={currentIndex}
-              src={images[currentIndex]}
-              alt={`Slide ${currentIndex}`}
-              initial={{ opacity: 0, scale: 1.1 }} // Slight zoom-in initially
-              animate={{ opacity: 1, scale: 1 }} // Normal scale on animation
-              exit={{ opacity: 0, scale: 1.1 }} // Slight zoom-in on exit
-              transition={{ duration: 3 }} // Increase duration to make the zoom slower
-              className="absolute w-full h-full object-cover"
-            />
+            {images.map((image, index) =>
+              index === currentIndex ? (
+                <motion.img
+                  key={index}
+                  src={image}
+                  alt={`Slide ${index}`}
+                  initial={{ x: "100%", opacity: 0 }} // Start from right (or left with "-100%")
+                  animate={{ x: 0, opacity: 1 }} // Slide into view
+                  exit={{ x: "-100%", opacity: 0 }} // Slide out to left (or right with "100%")
+                  transition={{ duration: 1, ease: "easeInOut" }}
+                  className="absolute w-full h-full object-cover"
+                />
+              ) : null
+            )}
           </AnimatePresence>
 
-          {/* Gradient Overlay with Parallax Effect */}
+          {/* Gradient Overlay */}
           <motion.div
             className="absolute inset-0 bg-gradient-to-t from-[#4C4370] to-transparent opacity-80"
             initial={{ opacity: 0.7 }}
@@ -66,19 +76,20 @@ export default function HomePage() {
             transition={{ duration: 1 }}
           />
 
-        
-
-          {/* Carousel Navigation Buttons */}
-          <button
-            onClick={goToPrevious}
-            className="absolute top-1/2 left-6 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-4 rounded-full opacity-75 hover:opacity-100 transition-opacity shadow-lg hover:shadow-xl">
-            &#9664;
-          </button>
-          <button
-            onClick={goToNext}
-            className="absolute top-1/2 right-6 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-4 rounded-full opacity-75 hover:opacity-100 transition-opacity shadow-lg hover:shadow-xl">
-            &#9654;
-          </button>
+          {/* Dots Navigation */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
+            {images.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-3 h-3 rounded-full ${
+                  index === currentIndex
+                    ? "bg-white scale-110"
+                    : "bg-gray-500 hover:bg-white"
+                } transition-transform duration-300`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Product Cards Section */}
@@ -86,6 +97,7 @@ export default function HomePage() {
         <MissionPage />
 
         <ImageGallery />
+        <About/>
 
         {/* Footer Section */}
         <footer className="bg-gray-800 text-white py-8">

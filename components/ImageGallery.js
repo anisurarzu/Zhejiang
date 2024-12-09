@@ -16,8 +16,8 @@ const images = [
 export default function ImageGallery() {
   return (
     <section className="py-12 px-6 bg-gray-50">
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl font-bold text-gray-800 mb-10">Our Gallery</h2>
+      <div className="max-w-7xl mx-auto text-center">
+      <h2 className="text-4xl font-extrabold text-gray-800 mb-12">Our Gallery</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {images.map((src, index) => (
             <motion.div
@@ -35,10 +35,10 @@ export default function ImageGallery() {
               <img
                 src={src}
                 alt={`Gallery image ${index + 1}`}
-                className="w-72 h-60 object-cover rounded-lg"
+                className="w-80 h-60 object-cover rounded-lg"
               />
               <motion.div
-                className="absolute inset-0 bg-black opacity-40"
+                className="absolute inset-0  opacity-40"
                 whileHover={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
               />
